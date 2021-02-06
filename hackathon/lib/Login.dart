@@ -41,7 +41,7 @@ class SignUpPage extends StatelessWidget {
                     labelText: "Password",
                   ),
                   validator:  (val){
-                    return val.length < 6 ? "6자 이상의 비밀번호를 입력해주세요." : null;
+                    return val.length < 6 ? "Please enter password." : null;
                   },
                 ),
                 Container(
