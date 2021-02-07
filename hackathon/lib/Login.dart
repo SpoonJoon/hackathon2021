@@ -164,16 +164,23 @@ class SignUpPage extends StatelessWidget {
         //backgroundColor: Colors.green[900],
         backgroundColor: Colors.transparent,
         body: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Container(height: size.height*0.6,),
-              _inputForm(size),
-              _loginButton(size),
-              Container(height: size.height*0.02,),
-              _signInorLogin()
-            ],
+          child: Stack(
+            children: [
+              Positioned(
+                  child: Image.asset('assets/images/byebuybing.png'),
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                 Container(height: size.height*0.6,),
+                 _inputForm(size),
+                 _loginButton(size),
+                 Container(height: size.height*0.02,),
+                 _signInorLogin()
+              ],
+            ),
+            ]
           ),
         ),
       ),

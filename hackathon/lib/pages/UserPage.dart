@@ -26,17 +26,16 @@ class UserPage extends StatelessWidget {
                 onPressed: null,
                 child: Icon(Icons.settings, color: Colors.green[900],),),
             ),
-            Divider(color: Colors.black, height: 1,),
+
             Container(
               height: size.height*0.25,
               child: UserAccountsDrawerHeader(
-                accountName: Text(currentUser.uid, style: TextStyle(color: Colors.black),),
+                accountName: Text('Joonhwan Yoo', style: TextStyle(color: Colors.black),),
                 accountEmail: Text(currentUser.email,style: TextStyle(color: Colors.black), ),
                 currentAccountPicture: GestureDetector(
                   child: CircleAvatar(
-                    backgroundImage: NetworkImage(
-                        "https://theaeac.org/wp-content/uploads/2016/04/Binghamton-President-Headshot-H.Stenger-e1581548021812.jpg"),
-                    radius: size.width*0.2,
+                    backgroundImage: AssetImage("assets/images/joon.jpg"),
+                    radius: size.width*0.4,
                   ),
                 ),
                 decoration: BoxDecoration(color: Colors.grey[300]),

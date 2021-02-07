@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,9 +20,8 @@ class _ListingPageState extends State<ListingPage> {
   TextEditingController _priceController = TextEditingController();
   Listing _currentListing = Listing();
   final picker = ImagePicker();
-
+  final currentUser = FirebaseAuth.instance.currentUser;
   String category = 'Category';
-
   File _imageFile;
   bool imageExists = false;
   DocumentReference listingRef = FirebaseFirestore.instance.collection("Listing").doc();
@@ -57,7 +57,7 @@ class _ListingPageState extends State<ListingPage> {
           contentPadding: EdgeInsets.only(left:20, right: 20)
         ),
         value: category,
-        items: <String>['Category', 'Text Book', 'Clothes', 'Appliances']
+        items: <String>['Category', 'Textbooks', 'Furniture', 'Electronics','Appliances', 'Clothing']
             .map<DropdownMenuItem<String>>((String value) {
           return DropdownMenuItem<String>(
             value: value,
@@ -207,13 +207,21 @@ class _ListingPageState extends State<ListingPage> {
   }
 
   _uploadListing(Listing listing) async{
+    if (!_formKey.currentState.validate()) {
+      final snacBar = SnackBar(
+        content: Text('Please enter all information'),
+      );
+      Scaffold.of(context).showSnackBar(snacBar);
+    }
+
     String url = await uploadImageToFirebase(_imageFile);
     print(url);
+    listing.userId = currentUser.uid;
     listing.image = url;
     listing.title = _titleController.text;
     listing.category = category;
     listing.content = _contentController.text;
-    listing.price = double.parse(_priceController.text);
+    listing.price = int.parse(_priceController.text);
     listing.createdAt = Timestamp.now();
     CollectionReference ref = FirebaseFirestore.instance.collection('Listing');
     DocumentReference documentReference = await ref.add(listing.toMap());

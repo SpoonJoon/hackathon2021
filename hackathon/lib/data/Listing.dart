@@ -2,19 +2,21 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class Listing{
+  String userId;
   String id;
   String title;
   String category;
   String content;
-  double price;
+  int price;
   String image;
   Timestamp createdAt;
 
   Listing();
 
   Listing.fromMap(Map<String, dynamic> data){
+    userId = data['userId'];
     id = data['id'];
-    title = data['name'];
+    title = data['title'];
     category = data['category'];
     content = data['content'];
     price = data['price'];
@@ -25,6 +27,7 @@ class Listing{
 
   Map<String, dynamic> toMap(){
     return{
+      'userId' : userId,
       'id' : id,
       'title' : title,
       'category' : category,

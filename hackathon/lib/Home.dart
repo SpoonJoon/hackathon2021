@@ -2,7 +2,6 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'file:///C:/Users/Joonie/Desktop/hackathon2021/hackathon/lib/data/Listing.dart';
 import 'package:hackathon/pages/ChatPage.dart';
 import 'package:hackathon/pages/ListingPage.dart';
 import 'package:hackathon/pages/MainPage.dart';
