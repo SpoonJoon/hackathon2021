@@ -16,25 +16,19 @@ class UserPage extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
+      backgroundColor: Colors.transparent,
       body: Center(
         child: ListView(
           children: <Widget>[
             ListTile(
-              title: Text('My Bootieqe', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+              title: Text('Profile', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.green[900]),),
               trailing: FlatButton(
                 onPressed: null,
-                child: Icon(Icons.settings, color: Colors.black,),),
+                child: Icon(Icons.settings, color: Colors.green[900],),),
             ),
+            Divider(color: Colors.black, height: 1,),
             Container(
               height: size.height*0.25,
-              decoration: BoxDecoration(
-                  border: Border(
-                    top: BorderSide(
-                      color: Colors.grey,
-                      width: 1,
-                    ),
-                  )
-              ),
               child: UserAccountsDrawerHeader(
                 accountName: Text(currentUser.uid, style: TextStyle(color: Colors.black),),
                 accountEmail: Text(currentUser.email,style: TextStyle(color: Colors.black), ),
@@ -45,12 +39,10 @@ class UserPage extends StatelessWidget {
                     radius: size.width*0.2,
                   ),
                 ),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                ),
+                decoration: BoxDecoration(color: Colors.grey[300]),
               ),
             ),
-            Divider(color: Colors.black,),
+            Divider(color: Colors.black,height: 0,),
             ListTile(
               leading: Icon(Icons.attach_money),
               title: Text('Sold Items'),
@@ -64,11 +56,11 @@ class UserPage extends StatelessWidget {
               title: Text('Liked Items'),
             ),
             Divider(
-              color: Colors.black,
+              color: Colors.grey,
             ),
             ListTile(
               leading: Icon(Icons.shopping_basket),
-              title: Text('장바구니'),
+              title: Text('Shopping Cart'),
             ),
             ListTile(
               leading: Icon(Icons.phone),
@@ -78,7 +70,6 @@ class UserPage extends StatelessWidget {
               color: Colors.black,
             ),
             FlatButton(
-              color: Colors.white,
               onPressed: (){
                 FirebaseAuth.instance.signOut();
               },

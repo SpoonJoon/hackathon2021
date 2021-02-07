@@ -1,6 +1,8 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:hackathon/Listing.dart';
+import 'file:///C:/Users/Joonie/Desktop/hackathon2021/hackathon/lib/data/Listing.dart';
 import 'package:hackathon/pages/ChatPage.dart';
 import 'package:hackathon/pages/ListingPage.dart';
 import 'package:hackathon/pages/MainPage.dart';
@@ -16,33 +18,21 @@ class _HomeState extends State<Home> {
   final _children = [MainPage(), ListingPage(), ChatPage(), UserPage()];
 
   //Widgets
-  _bottomNavigationBar(){
-    return BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        selectedItemColor: Colors.green[900],
-        onTap:_onTap,
-        currentIndex: _currentIndex,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text('Home'),
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.add),
-              title: Text('list')
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.chat_bubble),
-              title: Text('Chat')
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            title: Text('My Account'),
-          ),
-        ]
+  Widget _curvedNavigationBar() {
+    return CurvedNavigationBar(
+      height: 60,
+      backgroundColor: Colors.grey[300],
+      buttonBackgroundColor: Colors.transparent,
+      color: Colors.green[800],
+      items: <Widget>[
+        Icon(Icons.home,),
+        Icon(Icons.add,),
+        Icon(Icons.chat_bubble, ),
+        Icon(Icons.person,),
+      ],
+      onTap: _onTap,
     );
   }
-
   //functions
   _onTap(int index) {
     setState(() {
@@ -53,8 +43,9 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[300],
       body: _children[_currentIndex],
-      bottomNavigationBar: _bottomNavigationBar(),
+      bottomNavigationBar: _curvedNavigationBar(),
     );
   }
 }
