@@ -180,7 +180,7 @@ class _MainPageState extends State<MainPage> {
                                       Row(
                                         children: <Widget>[
                                           Container(width: 25,),
-                                          Expanded(child: Text(listing.title.toString(), style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),),
+                                          Expanded(child: Text(listing.title.toString(), style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),),),
                                           Container(width: 25,),
                                           Container(
                                             width: 46,
@@ -188,7 +188,7 @@ class _MainPageState extends State<MainPage> {
                                                 color: Colors.grey[400],
                                                   borderRadius: BorderRadius.circular(10),
                                               ),
-                                              child: Center(child: Text( '\$' + listing.price.toString(), style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),)))
+                                              child: Center(child: Text( '\$' + listing.price.toString(), style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),)))
                                           ,Container(width: 20,),
                                         ]
                                       ),

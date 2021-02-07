@@ -263,6 +263,11 @@ class _ListingPageState extends State<ListingPage> {
               color: Colors.black,
               onPressed: () {
                 _uploadListing(_currentListing);
+                final snacBar = SnackBar(
+                  content: Text('Uploaded!'),
+                );
+                Scaffold.of(context).showSnackBar(snacBar);
+        
                 print('success');
               },
             )
