@@ -13,7 +13,7 @@ class SignUpPage extends StatelessWidget {
   //INPUT FORM FOR EMAIL AND PASSWORD
   Widget _inputForm(Size size) {
     return Padding(
-      padding: EdgeInsets.all(size.width * 0.05),
+      padding: EdgeInsets.all(0),
       child: Card(
         elevation: 6,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
@@ -45,7 +45,7 @@ class SignUpPage extends StatelessWidget {
                   },
                 ),
                 Container(
-                  height: size.height * 0.03,
+                  height: size.height * 0.01,
                 ),
                 Consumer<LoginState>(
                     builder: (context, value, child) => Opacity(
@@ -68,7 +68,7 @@ class SignUpPage extends StatelessWidget {
   Widget _loginButton(Size size) {
     return SizedBox(
       height: 50,
-      width: size.width * 0.9,
+      width: size.width,
 
       child: Card(
         elevation: 6,
@@ -112,7 +112,7 @@ class SignUpPage extends StatelessWidget {
         },
         child: Text(
           LoginState.returningUser ?'Don\'t have an account? Make one!' : 'Have an account? Login!',
-          style: TextStyle(color: Colors.green[900]),
+          style: TextStyle(color: Colors.white),
         ),
       ),
     );
@@ -156,16 +156,26 @@ class SignUpPage extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
-    return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          _inputForm(size),
-          _loginButton(size),
-          Container(height: size.height*0.05,),
-          _signInorLogin()
-        ],
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(image: AssetImage('assets/images/bing2.png'), fit: BoxFit.cover)
+      ),
+      child: Scaffold(
+        //backgroundColor: Colors.green[900],
+        backgroundColor: Colors.transparent,
+        body: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Container(height: size.height*0.6,),
+              _inputForm(size),
+              _loginButton(size),
+              Container(height: size.height*0.02,),
+              _signInorLogin()
+            ],
+          ),
+        ),
       ),
     );
   }

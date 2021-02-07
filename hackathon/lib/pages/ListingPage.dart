@@ -22,8 +22,85 @@ class _ListingPageState extends State<ListingPage> {
   DocumentReference listingRef = FirebaseFirestore.instance.collection("Listing").doc();
 
 
-  //functions
+  //widgets
+  Widget _title(){
+    return Padding(
+      padding: EdgeInsets.only(right: 18, left: 18),
+      child: TextFormField(
+        style: TextStyle(fontSize: 18),
+        decoration: InputDecoration(
+            focusColor: Colors.black,
+            hintText: 'Title',
+            hintStyle: TextStyle(fontSize: 18),
+            border: InputBorder.none),
+        controller: _titleController,
+        validator: (String value) {
+          if (value.isEmpty)
+            return 'Title is required';
+          return null;
+        },
+        onSaved: (String value){
+          _currentListing.title = value;
+        },
+      ),
+    );
+  }
 
+  Widget _price(){
+    return Padding(
+      padding: EdgeInsets.only(left: 18, right: 18),
+      child: TextFormField(
+        keyboardType: TextInputType.number,
+        maxLines: null,
+        style: TextStyle(fontSize: 18),
+        decoration: InputDecoration(
+            prefixIcon: Icon(
+              Icons.attach_money,
+              color: Colors.grey,
+            ),
+            hintText: "Set Price",
+            hintStyle: TextStyle(fontSize: 18),
+            border: InputBorder.none,
+            focusedBorder: InputBorder.none),
+        controller: _priceController,
+        validator: (String value) {
+          if (value.isEmpty)
+            return 'Please Enter Price';
+          return null;
+        },
+        onSaved: (String value){
+          _currentListing.price = double.parse(value);
+        },
+      ),
+    );
+  }
+
+  Widget _description(){
+    return Padding(
+      padding: EdgeInsets.only(left: 18, right: 18),
+      child: TextFormField(
+        keyboardType: TextInputType.multiline,
+        maxLines: null,
+        style: TextStyle(fontSize: 18),
+        decoration: InputDecoration(
+            hintText: 'Description',
+            hintStyle: TextStyle(fontSize: 18),
+            border: InputBorder.none,
+            focusedBorder: InputBorder.none),
+        controller: _contentController,
+        validator: (String value) {
+          if (value.isEmpty)
+            return 'Please Enter Description';
+          return null;
+        },
+        onSaved: (String value){
+          _currentListing.content = value;
+        },
+      ),
+    );
+  }
+
+  //functions
   Future pickImage() async {
     final pickedFile = await picker.getImage(source: ImageSource.gallery);
     setState(() {
@@ -65,79 +142,14 @@ class _ListingPageState extends State<ListingPage> {
         body: SingleChildScrollView(
           child: Form(
             key: _formKey,
-            autovalidate: true,
+            //autovalidate: true,
             child: Column(children: <Widget>[
+              Divider(color: Colors.black,),
+              _title(),
+              Divider(color: Colors.black,),
+              _price(),
               Divider(),
-              Padding(
-                padding: EdgeInsets.only(right: 18, left: 18),
-                child: TextFormField(
-                  style: TextStyle(fontSize: 18),
-                  decoration: InputDecoration(
-                      focusColor: Colors.black,
-                      hintText: 'Title',
-                      hintStyle: TextStyle(fontSize: 18),
-                      border: InputBorder.none),
-                  controller: _titleController,
-                  validator: (String value) {
-                    if (value.isEmpty)
-                      return 'Title is required';
-                    return null;
-                  },
-                  onSaved: (String value){
-                    _currentListing.title = value;
-                  },
-                ),
-              ),
-              Divider(),
-              Padding(
-                padding: EdgeInsets.only(left: 18, right: 18),
-                child: TextFormField(
-                  keyboardType: TextInputType.number,
-                  maxLines: null,
-                  style: TextStyle(fontSize: 18),
-                  decoration: InputDecoration(
-                      prefixIcon: Icon(
-                        Icons.attach_money,
-                        color: Colors.grey,
-                      ),
-                      hintText: "Set Price",
-                      hintStyle: TextStyle(fontSize: 18),
-                      border: InputBorder.none,
-                      focusedBorder: InputBorder.none),
-                  controller: _priceController,
-                  validator: (String value) {
-                    if (value.isEmpty)
-                      return 'Please Enter Price';
-                    return null;
-                  },
-                  onSaved: (String value){
-                    _currentListing.price = double.parse(value);
-                  },
-                ),
-              ),
-              Divider(),
-              Padding(
-                padding: EdgeInsets.only(left: 18, right: 18),
-                child: TextFormField(
-                  keyboardType: TextInputType.multiline,
-                  maxLines: null,
-                  style: TextStyle(fontSize: 18),
-                  decoration: InputDecoration(
-                      hintText: 'Description',
-                      hintStyle: TextStyle(fontSize: 18),
-                      border: InputBorder.none,
-                      focusedBorder: InputBorder.none),
-                  controller: _contentController,
-                  validator: (String value) {
-                    if (value.isEmpty)
-                      return 'Please Enter Description';
-                    return null;
-                  },
-                  onSaved: (String value){
-                    _currentListing.content = value;
-                  },
-                ),
-              ),
+             _description(),
               Divider(),
               Padding(
                   padding: EdgeInsets.only(left: 18, right: 18),
