@@ -17,9 +17,11 @@ class _ListingPageState extends State<ListingPage> {
   TextEditingController _titleController = TextEditingController();
   TextEditingController _contentController = TextEditingController();
   TextEditingController _priceController = TextEditingController();
-  Listing _currentListing;
+  Listing _currentListing = Listing();
   final picker = ImagePicker();
+
   String category = 'Category';
+
   File _imageFile;
   bool imageExists = false;
   DocumentReference listingRef = FirebaseFirestore.instance.collection("Listing").doc();
@@ -42,9 +44,9 @@ class _ListingPageState extends State<ListingPage> {
             return 'Title is required';
           return null;
         },
-        onSaved: (String value){
-          _currentListing.title = value;
-        },
+//        onSaved: (String value){
+//          _currentListing.title = value;
+//        },
       ),
     );
   }
@@ -89,9 +91,9 @@ class _ListingPageState extends State<ListingPage> {
             return 'Please Enter Description';
           return null;
         },
-        onSaved: (String value){
-          _currentListing.content = value;
-        },
+//        onSaved: (String value){
+//          _currentListing.content = value;
+//        },
       ),
     );
   }
@@ -149,9 +151,9 @@ class _ListingPageState extends State<ListingPage> {
                     return 'Please Enter Price';
                   return null;
                 },
-                onSaved: (String value){
-                  _currentListing.price = double.parse(value);
-                },
+//                onSaved: (String value){
+//                  _currentListing.price = double.parse(value);
+//                },
               ),
             )
           ),
@@ -204,6 +206,36 @@ class _ListingPageState extends State<ListingPage> {
     });
   }
 
+  _uploadListing(Listing listing) async{
+    String url = await uploadImageToFirebase(_imageFile);
+    print(url);
+    listing.image = url;
+    listing.title = _titleController.text;
+    listing.category = category;
+    listing.content = _contentController.text;
+    listing.price = double.parse(_priceController.text);
+    listing.createdAt = Timestamp.now();
+    CollectionReference ref = FirebaseFirestore.instance.collection('Listing');
+    DocumentReference documentReference = await ref.add(listing.toMap());
+    listing.id = documentReference.id;
+    print('upload succesful');
+    await documentReference.update(listing.toMap());
+  }
+
+  Future<String> uploadImageToFirebase(File _image) async {
+    StorageReference storageReference = FirebaseStorage.instance
+        .ref()
+        .child('images/${DateTime.now().millisecondsSinceEpoch}');
+    StorageUploadTask uploadTask = storageReference.putFile(_image);
+    await uploadTask.onComplete;
+    print('File Uploaded');
+    String returnURL;
+    await storageReference.getDownloadURL().then((fileURL) {
+      returnURL = fileURL;
+    });
+    return returnURL;
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -222,9 +254,8 @@ class _ListingPageState extends State<ListingPage> {
               icon: Icon(Icons.chevron_right),
               color: Colors.black,
               onPressed: () {
-                //saveImages(_imageFileList, listingRef);
-                //_uploadListing(_currentListing);
-                //Navigator.push(context, SlideLeftRoute(page: AddLabel(_imageFileList)));
+                _uploadListing(_currentListing);
+                print('success');
               },
             )
           ],

@@ -7,7 +7,7 @@ class Listing{
   String category;
   String content;
   double price;
-  List image;
+  String image;
   Timestamp createdAt;
 
   Listing();
