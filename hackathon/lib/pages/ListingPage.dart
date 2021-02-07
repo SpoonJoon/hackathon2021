@@ -267,9 +267,7 @@ class _ListingPageState extends State<ListingPage> {
                   content: Text('Uploaded!'),
                 );
                 Scaffold.of(context).showSnackBar(snacBar);
-        
-                print('success');
-              },
+                },
             )
           ],
         ),
