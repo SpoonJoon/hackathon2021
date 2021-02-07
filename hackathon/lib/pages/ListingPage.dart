@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 
 import '../Listing.dart';
 
@@ -15,19 +17,35 @@ class _ListingPageState extends State<ListingPage> {
   TextEditingController _contentController = TextEditingController();
   TextEditingController _priceController = TextEditingController();
   Listing _currentListing;
-  //File _image;
+  final picker = ImagePicker();
+  File _imageFile;
   DocumentReference listingRef = FirebaseFirestore.instance.collection("Listing").doc();
+
+
+  //functions
+
+  Future pickImage() async {
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+    setState(() {
+      _imageFile = File(pickedFile.path);
+    });
+  }
+
+  Future takeImage() async {
+    final pickedFile = await picker.getImage(source: ImageSource.camera);
+    setState(() {
+      _imageFile = File(pickedFile.path);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery
-        .of(context)
-        .size;
+    Size size = MediaQuery.of(context).size;
 
     return Scaffold(
         appBar: AppBar(
           title: Text(
-            'Create a Bootie',
+            'Create a Listing',
             style: TextStyle(color: Colors.black),
           ),
           backgroundColor: Colors.white30,
@@ -72,7 +90,7 @@ class _ListingPageState extends State<ListingPage> {
               ),
               Divider(),
               Padding(
-                padding: EdgeInsets.only(left: 0, right: 18),
+                padding: EdgeInsets.only(left: 18, right: 18),
                 child: TextFormField(
                   keyboardType: TextInputType.number,
                   maxLines: null,
@@ -136,5 +154,4 @@ class _ListingPageState extends State<ListingPage> {
           ),
         ));
   }
-
 }
