@@ -155,7 +155,7 @@ class _MainPageState extends State<MainPage> {
                     );
                   }else{
                     return Padding(
-                      padding: EdgeInsets.only(top: 30),
+                      padding: EdgeInsets.only(top: 10),
                       child: GridView.builder(
                         itemCount: snapShot.data.documents.length,
                           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, crossAxisSpacing: 2, mainAxisSpacing: 2),
