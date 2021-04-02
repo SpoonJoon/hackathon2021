@@ -15,7 +15,7 @@ Snapshots:
 ![Screen Shot 2021-04-02 at 7 25 05 PM](https://user-images.githubusercontent.com/54812775/113408592-95d00380-93ea-11eb-9ead-6015cc0ba37b.png) 
 
 ![Screen Shot 2021-04-02 at 7 32 53 PM](https://user-images.githubusercontent.com/54812775/113408600-99638a80-93ea-11eb-885c-f832e255ad6c.png) ![Screen Shot 2021-04-02 at 7 33 32 PM](https://user-images.githubusercontent.com/54812775/113408609-9b2d4e00-93ea-11eb-9271-2d47ccbbfbb1.png)
-![Screen Shot 2021-04-02 at 7 55 03 PM](https://user-images.githubusercontent.com/54812775/113409984-56ef7d00-93ed-11eb-9e2f-7bb6567a26ac.png)![Screen Shot 2021-04-02 at 7 58 42 PM](https://user-images.githubusercontent.com/54812775/113410238-e4cb6800-93ed-11eb-87e7-2f60596fad00.png)
+![Screen Shot 2021-04-02 at 7 55 03 PM](https://user-images.githubusercontent.com/54812775/113409984-56ef7d00-93ed-11eb-9e2f-7bb6567a26ac.png)![Screen Shot 2021-04-02 at 7 55 03 PM](https://user-images.githubusercontent.com/54812775/113425772-6a124500-940d-11eb-8660-99e442bc9909.png)
 
 
 ![Screen Shot 2021-04-02 at 7 33 46 PM](https://user-images.githubusercontent.com/54812775/113408615-9d8fa800-93ea-11eb-84bf-6253d05c7692.png) ![Screen Shot 2021-04-02 at 7 34 01 PM](https://user-images.githubusercontent.com/54812775/113408643-a84a3d00-93ea-11eb-89a5-b92cbe566efd.png)
