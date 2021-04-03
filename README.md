@@ -12,9 +12,7 @@ Please note for safety reasons posting/retrieving items is no longer available s
 
 Snapshots:
 
-![Screen Shot 2021-04-02 at 7 25 05 PM](https://user-images.githubusercontent.com/54812775/113408592-95d00380-93ea-11eb-9ead-6015cc0ba37b.png) 
-
-![Screen Shot 2021-04-02 at 7 32 53 PM](https://user-images.githubusercontent.com/54812775/113408600-99638a80-93ea-11eb-885c-f832e255ad6c.png) ![Screen Shot 2021-04-02 at 11 41 46 PM](https://user-images.githubusercontent.com/54812775/113425884-929a3f00-940d-11eb-9bba-c7a13aec4c47.png)
+![Screen Shot 2021-04-02 at 7 25 05 PM](https://user-images.githubusercontent.com/54812775/113408592-95d00380-93ea-11eb-9ead-6015cc0ba37b.png)![Screen Shot 2021-04-02 at 11 41 46 PM](https://user-images.githubusercontent.com/54812775/113425884-929a3f00-940d-11eb-9bba-c7a13aec4c47.png)
 
 ![Screen Shot 2021-04-02 at 7 55 03 PM](https://user-images.githubusercontent.com/54812775/113409984-56ef7d00-93ed-11eb-9e2f-7bb6567a26ac.png)![Screen Shot 2021-04-02 at 7 58 42 PM](https://user-images.githubusercontent.com/54812775/113425894-975ef300-940d-11eb-804f-8ea5782e91c3.png)
 
